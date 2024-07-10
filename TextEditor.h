@@ -13,6 +13,12 @@
 class TextEditor
 {
 public:
+	enum RenderFlags_ : uint8_t {
+		RenderFlags_ShowBorder = (1 << 0),
+		RenderFlags_AlwaysHorizontalScrollbar = (1 << 1),		
+	};
+	typedef uint8_t RenderFlags;
+
 	enum class PaletteIndex
 	{
 		Default,
@@ -194,7 +200,7 @@ public:
 	void SetErrorMarkers(const ErrorMarkers& aMarkers) { mErrorMarkers = aMarkers; }
 	void SetBreakpoints(const Breakpoints& aMarkers) { mBreakpoints = aMarkers; }
 
-	void Render(const char* aTitle, const ImVec2& aSize = ImVec2(), bool aBorder = false);
+	void Render(const char* aTitle, const ImVec2& aSize = ImVec2(), RenderFlags aFlags = 0);
 	void SetText(const std::string& aText);
 	std::string GetText() const;
 
