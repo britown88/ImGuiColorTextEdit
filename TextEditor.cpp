@@ -104,8 +104,9 @@ std::string TextEditor::GetText(const Coordinates & aStart, const Coordinates & 
 		else
 		{
 			istart = 0;
-			++lstart;
-			result += '\n';
+			if (++lstart < (int)mLines.size()) {
+				result += '\n';
+			}			
 		}
 	}
 
